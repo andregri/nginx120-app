@@ -7,8 +7,9 @@ RUN chown -R 1001:0 /tmp/src
 
 # Copy hardening conf files and allow default user (1001) to access them
 COPY security/ /tmp/src/nginx-default-cfg/
-RUN chgrp -R 0 /tmp/src/nginx-default-cfg && \
-    chmod -R g=u /tmp/src/nginx-default-cfg
+#RUN chgrp -R 0 /tmp/src/nginx-default-cfg && \
+#    chmod -R g=u /tmp/src/nginx-default-cfg
+RUN chown -R 1001:0 /tmp/src/nginx-default-cfg
 
 USER 1001
 
