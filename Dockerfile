@@ -11,3 +11,9 @@ RUN chgrp -R 0 /tmp/src/nginx-default-cfg && \
     chmod -R g=u /tmp/src/nginx-default-cfg
 
 USER 1001
+
+# Let the assemble script to install the dependencies
+RUN /usr/libexec/s2i/assemble
+
+# Run script uses standard ways to run the application
+CMD /usr/libexec/s2i/run
